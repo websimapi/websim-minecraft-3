@@ -1,0 +1,313 @@
+#furnace-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 250;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    padding: 20px;
+}
+
+#furnace-container {
+    background: #c6c6c6;
+    padding: 25px;
+    border-radius: 12px 12px 0 0;
+    border: 3px solid #5a5a5a;
+    border-bottom: none;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 2px 0 rgba(255, 255, 255, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.furnace-grid-area {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 20px 0;
+}
+
+.furnace-io-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.furnace-slots-group {
+    display: none;
+}
+
+.furnace-input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Gap between input/flame/fuel */
+}
+
+.furnace-input-slot {
+    /* No special styles needed */
+}
+
+.furnace-fuel-slot {
+    /* No special styles needed */
+}
+
+.furnace-status-group {
+    display: none;
+}
+
+.furnace-status-area {
+    /* No longer used */
+    display: none;
+}
+
+.furnace-output-area {
+    display: none;
+}
+
+.furnace-io-slots {
+    display: none; /* No longer used */
+}
+
+#furnace-slots {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.furnace-slot {
+    width: 64px;
+    height: 64px;
+    background: #8b8b8b;
+    border: 2px solid #373737;
+    border-top-color: #a0a0a0;
+    border-left-color: #a0a0a0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    image-rendering: pixelated;
+    transition: all 0.15s ease;
+}
+
+.furnace-slot:hover {
+    border-color: #f8982c;
+    box-shadow: 0 0 15px rgba(248, 152, 44, 0.5);
+}
+
+#furnace-input-slot {
+    /* No longer needed */
+}
+
+#furnace-fuel-slot {
+    /* No longer needed */
+}
+
+.flame-icon-container {
+    position: relative;
+    width: 48px;
+    height: 48px;
+}
+
+.flame-icon-bg, .flame-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Fill the container */
+    height: 100%;
+    background-image: url('flame icon furnace ui.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+}
+
+.flame-icon-bg {
+    opacity: 0.3;
+    filter: grayscale(100%) brightness(0.7);
+}
+
+.flame-icon {
+    clip-path: inset(100% 0 0 0);
+    transition: clip-path 0.1s linear;
+}
+
+.furnace-arrow-container {
+    position: relative;
+    width: 64px; /* Reduced from 96px */
+    height: 64px; /* Standardized height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border-radius: 0;
+    border: none;
+    margin-top: 0; /* Reset margin */
+}
+
+.furnace-arrow-and-output {
+    display: flex;
+    flex-direction: row; /* Changed to row */
+    align-items: center; /* Vertically centers children within this group's height */
+    gap: 8px; /* Gap between arrow and output slot */
+    margin-top: 0; /* Removed negative margin */
+}
+
+.furnace-arrow-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='16' viewBox='0 0 24 16'%3E%3Cpath d='M0 7h16.17l-5.59-5.59L12 0l8 8-8 8-1.41-1.41L16.17 9H0z' fill='%23555'/%3E%3C/svg%3E");
+    background-size: 48px 32px; /* Adjusted size for better visual fit */
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.5;
+}
+
+.furnace-progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='16' viewBox='0 0 24 16'%3E%3Cpath d='M0 7h16.17l-5.59-5.59L12 0l8 8-8 8-1.41-1.41L16.17 9H0z' fill='%23FFF'/%3E%3C/svg%3E");
+    background-size: 48px 32px; /* Adjusted size for better visual fit */
+    background-repeat: no-repeat;
+    background-position: center;
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.1s linear;
+}
+
+#furnace-output {
+    /* No longer needed */
+}
+
+#furnace-output .output-slot,
+.furnace-arrow-and-output > .output-slot {
+    width: 80px;  /* Make output slot bigger */
+    height: 80px;
+    background: #8b8b8b;
+    border: 2px solid #555;
+}
+
+#furnace-inventory-container {
+    background: #c6c6c6;
+    padding: 25px;
+    border-radius: 0 0 12px 12px;
+    border: 3px solid #5a5a5a;
+    border-top-color: #e0e0e0;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 2px 0 rgba(255, 255, 255, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#furnace-inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(9, 64px);
+    grid-template-rows: repeat(3, 64px);
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+#furnace-inventory-hotbar {
+    display: grid;
+    grid-template-columns: repeat(9, 64px);
+    gap: 6px;
+    padding-top: 15px;
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* --- Crafting Table & Personal Crafting --- */
+#crafting-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 250;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 20px;
+}
+
+#crafting-container {
+    background: linear-gradient(145deg, rgba(80, 60, 50, 0.95), rgba(60, 40, 30, 0.95));
+    padding: 25px;
+    border-radius: 12px;
+    border: 3px solid rgba(139, 90, 43, 0.6);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.crafting-grid-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#crafting-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 64px);
+    grid-template-rows: repeat(3, 64px);
+    gap: 6px;
+}
+
+#crafting-inventory-container {
+    background: linear-gradient(145deg, rgba(60, 60, 70, 0.95), rgba(40, 40, 50, 0.95));
+    padding: 25px;
+    border-radius: 12px;
+    border: 3px solid rgba(100, 150, 200, 0.6);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#crafting-inventory-grid {
+    display: grid;
+    grid-template-columns: repeat(9, 64px);
+    grid-template-rows: repeat(3, 64px);
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+#crafting-inventory-hotbar {
+    display: grid;
+    grid-template-columns: repeat(9, 64px);
+    gap: 6px;
+    padding-top: 15px;
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Personal crafting grid styles */
+#inventory-crafting-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+}
+
+#personal-crafting-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 64px);
+    grid-template-rows: repeat(2, 64px);
+    gap: 6px;
+}

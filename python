@@ -1,0 +1,23 @@
+import pandas as pd
+import numpy as np
+import io
+
+csv_data = """
+fruit,qty,price
+apple,10,1.0
+orange,15,0.8
+banana,12,0.6
+"""
+
+df = pd.read_csv(io.StringIO(csv_data))
+print(df)
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+df = pd.DataFrame(np.random.randn(10, 4), columns=['a', 'b', 'c', 'd'])
+df.plot()
+plt.show()
+
+

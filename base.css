@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: #87CEEB;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+canvas {
+    display: block;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.drag-over {
+    background: rgba(100, 150, 255, 0.5) !important;
+    border-color: rgba(150, 200, 255, 1) !important;
+}

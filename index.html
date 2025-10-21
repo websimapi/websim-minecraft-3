@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft</title>
+    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="ui.css">
+    <link rel="stylesheet" href="inventory.css">
+    <link rel="stylesheet" href="crafting.css">
+    <link rel="preload" as="image" href="grass top.png">
+    <link rel="preload" as="image" href="dirt.png">
+    <link rel="preload" as="image" href="cobblestone.png">
+    <link rel="preload" as="image" href="stone.png">
+    <link rel="preload" as="image" href="snow.png">
+    <link rel="preload" as="image" href="tree log side.png">
+    <link rel="preload" as="image" href="leaffs.png">
+    <link rel="preload" as="image" href="tnt.png">
+    <link rel="preload" as="image" href="plank.png">
+    <link rel="preload" as="image" href="flint_and_steel.png">
+    <link rel="preload" as="image" href="boom.png">
+    <link rel="preload" as="image" href="glass.png">
+    <link rel="preload" as="image" href="damaged block stage 1.png">
+    <link rel="preload" as="image" href="damaged block stage 2.png">
+    <link rel="preload" as="image" href="damaged block stage 3.png">
+    <link rel="preload" as="image" href="damaged block stage 4.png">
+    <link rel="preload" as="image" href="damaged block stage 5.png">
+    <link rel="preload" as="image" href="damaged block about to break.png">
+    <link rel="preload" as="image" href="crafting table bottom.png">
+    <link rel="preload" as="image" href="crafting table side.png">
+    <link rel="preload" as="image" href="crafting table top.png">
+    <link rel="preload" as="image" href="tnt bottom or top.png">
+    <link rel="preload" as="image" href="bedrock.png">
+    <link rel="preload" as="image" href="gravel.png">
+    <link rel="preload" as="image" href="sand.png">
+    <link rel="preload" as="image" href="iron block natural spawn.png">
+    <link rel="preload" as="image" href="iron ingot drop (1).png">
+    <link rel="preload" as="image" href="User Arm.png">
+    <link rel="preload" as="image" href="user arm front.png">
+</head>
+<body>
+    <div id="icon-preloader">
+        <h2>Caching textures...</h2>
+        <div id="preload-icons"></div>
+    </div>
+    <div id="crosshair"></div>
+    <div id="coords"></div>
+    <div id="fps-counter"></div>
+    <div id="hotbar">
+        <div class="hotbar-slot" data-slot="0"><span class="slot-number">1</span><div class="slot-content"></div><span class="slot-count">0</span></div>
+        <div class="hotbar-slot" data-slot="1"><span class="slot-number">2</span><div class="slot-content"></div><span class="slot-count">0</span></div>
+        <div class="hotbar-slot" data-slot="2"><span class="slot-number">3</span><div class="slot-content"></div><span class="slot-count">0</span></div>
+        <div class="hotbar-slot" data-slot="3"><span class="slot-number">4</span><div class="slot-content"></div><span class="slot-count">0</span></div>
+        <div class="hotbar-slot" data-slot="4"><span class="slot-number">5</span><div class="slot-content"></div><span class="slot-count">0</span></div>
+        <div class="hotbar-slot" data-slot="5"><span class="slot-number">6</span><div class="slot-content"></div><span class="slot-count">0</span></div>
+        <div class="hotbar-slot" data-slot="6"><span class="slot-number">7</span><div class="slot-content"></div><span class="slot-count">0</span></div>
+        <div class="hotbar-slot" data-slot="7"><span class="slot-number">8</span><div class="slot-content"></div><span class="slot-count">0</span></div>
+        <div class="hotbar-slot" data-slot="8"><span class="slot-number">9</span><div class="slot-content"></div><span class="slot-count">0</span></div>
+    </div>
+    <div id="pause-menu">
+        <img src="Gonbe%20game.png" alt="Gonbe Game" class="watermark">
+        <h2>Paused</h2>
+        <div class="control-group">
+            <label for="render-distance">Render Distance</label>
+            <input type="range" id="render-distance" min="2" max="40" value="8" step="1">
+            <div class="value-display" id="render-distance-value">8 chunks</div>
+        </div>
+        <div class="control-group">
+            <label for="world-seed">World Seed</label>
+            <input type="text" id="world-seed" readonly>
+        </div>
+        <button id="random-seed-button">Generate New World</button>
+        <button id="resume-button">Resume Game</button>
+    </div>
+    <div id="console" class="hidden">
+        <div id="console-output"></div>
+        <div id="console-suggestions"></div>
+        <div id="console-input-container">
+            <span id="console-prompt">&gt;</span>
+            <input type="text" id="console-input" autocomplete="off" spellcheck="false">
+        </div>
+    </div>
+    <div id="inventory-screen" class="hidden">
+        <div id="inventory-container">
+            <h2>Inventory</h2>
+            <div id="inventory-crafting-section">
+                <div id="personal-crafting-grid"></div>
+                <div class="crafting-arrow">➔</div>
+                <div id="personal-crafting-output">
+                    <div class="crafting-slot personal-output-slot" data-slot="output">
+                        <div class="slot-content"></div>
+                        <span class="slot-count"></span>
+                    </div>
+                </div>
+            </div>
+            <div id="inventory-grid"></div>
+            <div id="inventory-hotbar"></div>
+        </div>
+        <div id="creative-menu">
+            <h2>Creative</h2>
+            <div id="creative-grid"></div>
+        </div>
+    </div>
+    <div id="crafting-screen" class="hidden">
+        <div id="crafting-container">
+            <h2>Crafting Table</h2>
+            <div class="crafting-grid-area">
+                <div id="crafting-grid"></div>
+                <div class="crafting-arrow">➔</div>
+                <div id="crafting-output">
+                    <div class="crafting-slot output-slot" data-slot="output">
+                        <div class="slot-content"></div>
+                        <span class="slot-count"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="crafting-inventory-container">
+            <h2>Inventory</h2>
+            <div id="crafting-inventory-grid"></div>
+            <div id="crafting-inventory-hotbar"></div>
+        </div>
+    </div>
+    <div id="furnace-screen" class="hidden">
+        <div id="furnace-container">
+            <h2>Furnace</h2>
+            <div class="furnace-grid-area">
+                 <div class="furnace-io-group">
+                    <div class="furnace-slot furnace-input-slot" id="furnace-input-slot" data-furnace-slot="input">
+                        <div class="slot-content"></div>
+                        <span class="slot-count"></span>
+                    </div>
+                    <div class="flame-icon-container">
+                         <div class="flame-icon-bg"></div>
+                         <div class="flame-icon"></div>
+                    </div>
+                    <div class="furnace-slot furnace-fuel-slot" id="furnace-fuel-slot" data-furnace-slot="fuel">
+                        <div class="slot-content"></div>
+                        <span class="slot-count"></span>
+                    </div>
+                </div>
+
+                <div class="furnace-arrow-and-output">
+                    <div class="furnace-arrow-container">
+                        <div class="furnace-arrow-bg"></div>
+                        <div class="furnace-progress"></div>
+                    </div>
+
+                    <div class="furnace-slot output-slot" id="furnace-output-slot" data-furnace-slot="output">
+                        <div class="slot-content"></div>
+                        <span class="slot-count"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="furnace-inventory-container">
+            <h2>Inventory</h2>
+            <div id="furnace-inventory-grid"></div>
+            <div id="furnace-inventory-hotbar"></div>
+        </div>
+    </div>
+    <div id="tooltip" class="hidden"></div>
+    <div id="loading-screen" style="display: none !important;">
+        <h1>Loading world...</h1>
+    </div>
+    <div class="inventory-cursor" style="display: none;">
+        <div class="cursor-content"></div>
+        <span class="cursor-count"></span>
+    </div>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://esm.sh/three@0.163.0",
+            "three/addons/": "https://esm.sh/three@0.163.0/examples/jsm/",
+            "simplex-noise": "https://esm.sh/simplex-noise@4.0.1"
+        }
+    }
+    </script>
+    <script type="module" src="main.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"4c6229722a6346bc8eb5cb0e5eae5d41","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
